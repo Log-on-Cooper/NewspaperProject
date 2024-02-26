@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newspaper Landing Page</title>
+    <link rel="stylesheet" href="css/style.css">`.
+</head>
+<body>
+    <header>
+        <h1>The Flightful News</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="article.html">Article</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="gallery-controls">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
+    </div>
+
+    <div class="photogallery" id="photogallery">
+        <div class="photo1"><img src="https://list25.com/wp-content/uploads/2017/09/exoticbird.jpg" id="current-image" alt="Quetzel Photo"></div>
+       <!--<div class="photo2"><img src="https://www.sweeneyfeeders.com/wp-content/uploads/2014/02/hoopoe_crest.jpg" alt="Hoopoe Photo"></div>---> 
+       <!--<div class="photo3"><img src="https://btjjungle.com/wp-content/uploads/2015/11/photodune-4652202-blue-budgie-parrot-pet-bird-xs.jpg" alt="Blue Budgie Photo"></div>--> 
+    </div>
+
+    
+    <script>
+        document.querySelector(".hamburger").addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+     const photogallery = document.getElementById('photogallery');
+     const prevButton = document.getElementById('prev');
+     const nextButton = document.getElementById('next');
+   
+    const images= ['https://list25.com/wp-content/uploads/2017/09/exoticbird.jpg', 'https://www.sweeneyfeeders.com/wp-content/uploads/2014/02/hoopoe_crest.jpg', 'https://btjjungle.com/wp-content/uploads/2015/11/photodune-4652202-blue-budgie-parrot-pet-bird-xs.jpg'];
+        let currentIndex = 0;
+
+        prevButton.addEventListener('click', () => {
+            currentIndex =(currentIndex + 1 + images.length) % images.length;
+            updateImage();
+        });
+        nextButton.addEventListener('click', () => {
+            currentIndex =(currentIndex + 1) % images.length;
+            updateImage();
+        });
+
+        function updateImage() {
+            const img = photogallery.querySelector('#current-image');
+            
+            setTimeout(() => {
+                img.src = images[currentIndex];
+                img.src = images[currentIndex];
+            }, 100);
+       };
+    </script>
+
+</body>
+</html>
